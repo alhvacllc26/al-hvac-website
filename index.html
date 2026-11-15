@@ -255,7 +255,7 @@
         <div class="section-head">
           <div class="eyebrow">Contact us</div>
           <h2>Let’s talk about your HVAC needs</h2>
-          <p>Call us directly or prepare a service request below. The request form opens your email app with your details filled in.</p>
+          <p>Call us directly or send a service request below and we’ll get back to you.</p>
         </div>
         <div class="contact-grid">
           <div class="contact-info">
@@ -275,8 +275,8 @@
               <div><label for="service">Service needed</label><select id="service" name="service" required><option value="">Choose a service</option><option>Heating repair</option><option>AC repair</option><option>Heating maintenance / tune-up</option><option>AC maintenance / tune-up</option><option>New system installation</option><option>Hot water heater</option><option>Other / not sure</option></select></div>
             </div>
             <div><label for="message">How can we help?</label><textarea id="message" name="message" placeholder="Tell us a little about your system or issue..."></textarea></div>
-            <button class="btn btn-primary" type="submit">Prepare Service Request →</button>
-            <p class="form-note">This demo form does not submit information to a server. It opens your email app so you can send the request. Add your business email to the code before publishing.</p>
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+            <button class="btn btn-primary" type="submit" id="submitBtn">Send Service Request →</button>
             <p id="formStatus" class="form-note" role="status"></p>
           </form>
         </div>
@@ -293,19 +293,40 @@
   <div class="mobile-call"><a class="btn btn-primary" href="tel:+15169883035">☎ Call A&amp;L HVAC · 516-988-3035</a></div>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('serviceForm').addEventListener('submit', function(event) {
+    document.getElementById('serviceForm').addEventListener('submit', async function(event) {
       event.preventDefault();
-      const data = new FormData(this);
-      const subject = encodeURIComponent('HVAC Service Request - ' + data.get('name'));
-      const body = encodeURIComponent(
-        'Name: ' + data.get('name') + '\n' +
-        'Phone: ' + data.get('phone') + '\n' +
-        'Area: ' + data.get('area') + '\n' +
-        'Service: ' + data.get('service') + '\n\n' +
-        'Details: ' + (data.get('message') || 'Not provided')
-      );
-      document.getElementById('formStatus').textContent = 'Opening your email app with your service request. Please add A&L HVAC’s business email in the website code before publishing.';
-      window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+      const form = this;
+      const status = document.getElementById('formStatus');
+      const button = document.getElementById('submitBtn');
+      const data = new FormData(form);
+      if (data.get('_honey')) return;
+      button.disabled = true;
+      button.textContent = 'Sending...';
+      status.textContent = '';
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/alhvacllc26@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            _subject: 'New HVAC Service Request - ' + data.get('name'),
+            _template: 'table',
+            Name: data.get('name'),
+            Phone: data.get('phone'),
+            Area: data.get('area'),
+            Service: data.get('service'),
+            Details: data.get('message') || 'Not provided'
+          })
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || result.success === false || result.success === 'false') throw new Error(result.message || 'Request failed');
+        form.reset();
+        status.textContent = 'Thank you! Your request was sent. We’ll be in touch soon.';
+      } catch (err) {
+        status.textContent = 'Sorry, something went wrong. Please call us at 516-988-3035.';
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Send Service Request →';
+      }
     });
   </script>
 </body>
