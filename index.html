@@ -153,6 +153,14 @@
     input:focus,select:focus,textarea:focus{outline:3px solid #1689d422;border-color:var(--blue)}
     textarea{min-height:120px;resize:vertical}
     .form-note{font-size:.82rem;color:var(--muted);margin:0}
+    .form-error{color:#b42318;font-weight:700}
+    .contact-form[hidden],.form-success[hidden]{display:none}
+    .form-success{scroll-margin-top:110px;outline:none;border:1px solid var(--line);border-radius:17px;padding:38px 30px;text-align:center;background:var(--ice)}
+    .success-icon{width:64px;height:64px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:2rem;font-weight:900;margin:0 auto 18px}
+    .form-success h3{margin:0 0 10px;color:var(--navy);font-size:1.5rem}
+    .form-success p{margin:0 auto 22px;color:var(--muted);max-width:420px}
+    .form-success a{color:var(--blue)}
+    .form-success .btn{cursor:pointer;font:inherit;font-weight:850}
     footer{background:#091725;color:#c1d0dc;padding:27px 0}
     .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
     .footer-brand{color:#fff;font-weight:900}
@@ -325,8 +333,14 @@
             <div><label for="message">How can we help?</label><textarea id="message" name="message" placeholder="Tell us a little about your system or issue..."></textarea></div>
             <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
             <button class="btn btn-primary" type="submit" id="submitBtn">Send Service Request →</button>
-            <p id="formStatus" class="form-note" role="status"></p>
+            <p id="formStatus" class="form-note form-error" role="alert"></p>
           </form>
+          <div class="form-success" id="formSuccess" role="status" tabindex="-1" hidden>
+            <div class="success-icon">✓</div>
+            <h3 id="successTitle">Thank you! Your request was sent.</h3>
+            <p>We’ve received your service request and will call you back as soon as possible. Need help right away? Call us at <a href="tel:+15169883035"><strong>516-988-3035</strong></a>.</p>
+            <button class="btn btn-dark" type="button" id="sendAnother">Send another request</button>
+          </div>
         </div>
       </div>
     </section>
@@ -341,9 +355,12 @@
   <div class="mobile-call"><a class="btn btn-primary" href="tel:+15169883035">☎ Call A&amp;L HVAC · 516-988-3035</a></div>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('serviceForm').addEventListener('submit', async function(event) {
+    // Form submissions are sent through Formspree to the business email.
+    const FORM_ENDPOINT = 'https://formspree.io/f/xqpqplaz';
+    const form = document.getElementById('serviceForm');
+    const success = document.getElementById('formSuccess');
+    form.addEventListener('submit', async function(event) {
       event.preventDefault();
-      const form = this;
       const status = document.getElementById('formStatus');
       const button = document.getElementById('submitBtn');
       const data = new FormData(form);
@@ -352,12 +369,11 @@
       button.textContent = 'Sending...';
       status.textContent = '';
       try {
-        const response = await fetch('https://formsubmit.co/ajax/alhvacllc26@gmail.com', {
+        const response = await fetch(FORM_ENDPOINT, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
             _subject: 'New HVAC Service Request - ' + data.get('name'),
-            _template: 'table',
             Name: data.get('name'),
             Phone: data.get('phone'),
             Area: data.get('area'),
@@ -366,15 +382,24 @@
           })
         });
         const result = await response.json().catch(() => ({}));
-        if (!response.ok || result.success === false || result.success === 'false') throw new Error(result.message || 'Request failed');
+        if (!response.ok || result.success === false || result.success === 'false') throw new Error('Request failed');
+        const firstName = String(data.get('name') || '').trim().split(' ')[0];
+        document.getElementById('successTitle').textContent = firstName ? 'Thank you, ' + firstName + '! Your request was sent.' : 'Thank you! Your request was sent.';
         form.reset();
-        status.textContent = 'Thank you! Your request was sent. We’ll be in touch soon.';
+        form.hidden = true;
+        success.hidden = false;
+        success.focus();
       } catch (err) {
-        status.textContent = 'Sorry, something went wrong. Please call us at 516-988-3035.';
+        status.textContent = 'Sorry, your request could not be sent. Please call us at 516-988-3035.';
       } finally {
         button.disabled = false;
         button.textContent = 'Send Service Request →';
       }
+    });
+    document.getElementById('sendAnother').addEventListener('click', function() {
+      success.hidden = true;
+      form.hidden = false;
+      document.getElementById('name').focus();
     });
   </script>
 </body>
