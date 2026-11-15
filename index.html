@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10243a">
+  <meta name="description" content="A&L HVAC LLC is a family-owned heating and cooling company serving Queens, Nassau County, and the Bronx. Call 516-988-3035 for service, maintenance, installation, and hot water heater service.">
+  <title>A&L HVAC LLC | Quality Service. Reliable Comfort.</title>
+  <style>
+    :root{--navy:#10243a;--navy2:#173651;--blue:#1689d4;--ice:#eaf6fc;--gold:#f5b942;--ink:#172636;--muted:#5b6b7b;--white:#fff;--line:#dce5ec}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);line-height:1.6;background:#fff}
+    a{color:inherit}
+    .topbar{background:#0b1928;color:#eaf3fa;font-size:.9rem}
+    .topbar-inner,.nav-inner,.container{width:min(1160px,calc(100% - 40px));margin:auto}
+    .topbar-inner{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:9px 0}
+    .topbar a{color:#fff;text-decoration:none;font-weight:800}
+    header{background:#fff;position:sticky;top:0;z-index:10;box-shadow:0 4px 18px #10243a12}
+    .nav-inner{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+    .brand-mark{width:53px;height:53px;border-radius:13px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:950;font-size:1.18rem;letter-spacing:-1px;position:relative;flex-shrink:0}
+    .brand-mark:after{content:"";position:absolute;width:22px;height:4px;background:var(--gold);bottom:8px;left:15px;border-radius:4px}
+    .brand-name{font-size:1.2rem;font-weight:950;letter-spacing:.3px;color:var(--navy);line-height:1.2}
+    .brand-sub{display:block;font-size:.68rem;letter-spacing:2px;color:var(--muted);font-weight:800;margin-top:4px}
+    nav{display:flex;align-items:center;gap:25px}
+    nav a{text-decoration:none;font-weight:750;font-size:.94rem;color:#304254}
+    nav a:hover{color:var(--blue)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 19px;border-radius:8px;text-decoration:none;font-weight:850;border:2px solid transparent;transition:transform .18s,background .18s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--blue);color:#fff}
+    .btn-primary:hover{background:#0877bf}
+    .btn-dark{background:var(--navy);color:#fff}
+    .btn-outline{border-color:#ffffff90;color:#fff;background:transparent}
+    .hero{background:linear-gradient(112deg,#0c1e31 0%,#143652 63%,#125f8d 100%);color:#fff;overflow:hidden;position:relative}
+    .hero:after{content:"";position:absolute;width:530px;height:530px;border:1px solid #ffffff16;border-radius:50%;right:-110px;top:-160px;box-shadow:0 0 0 55px #ffffff08,0 0 0 110px #ffffff05}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:46px;align-items:center;padding-top:78px;padding-bottom:82px;position:relative;z-index:1}
+    .eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:2.4px;font-weight:900;color:var(--gold);display:flex;align-items:center;gap:10px}
+    .eyebrow:before{content:"";width:28px;height:3px;background:var(--gold);border-radius:5px}
+    h1{font-size:clamp(2.6rem,5.1vw,4.65rem);line-height:1.04;letter-spacing:-2.2px;margin:20px 0}
+    h1 span{color:#70caff}
+    .hero p{font-size:1.13rem;color:#d9e8f4;max-width:600px;margin:0 0 28px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-note{margin-top:22px;color:#c1d6e5;font-size:.91rem}
+    .hero-note strong{color:#fff}
+    .hero-art{min-height:365px;display:grid;place-items:center;position:relative}
+    .orbit{width:min(360px,100%);aspect-ratio:1;border:1px solid #ffffff35;border-radius:50%;display:grid;place-items:center;position:relative;background:radial-gradient(circle,#ffffff10 0,#ffffff03 60%,transparent 61%)}
+    .orbit:before,.orbit:after{content:"";position:absolute;border:1px solid #ffffff22;border-radius:50%;inset:28px}
+    .orbit:after{inset:60px}
+    .hvac-icon{width:190px;height:190px;background:#fff;border-radius:30px;display:grid;place-items:center;box-shadow:0 25px 65px #07162565;transform:rotate(-4deg)}
+    .hvac-icon svg{width:145px;height:145px}
+    .floating-tag{position:absolute;background:#fff;color:var(--navy);padding:12px 15px;border-radius:12px;box-shadow:0 12px 28px #06152540;font-weight:850;font-size:.88rem}
+    .tag-one{top:35px;right:-8px}.tag-two{bottom:35px;left:-8px}
+    .trust-strip{background:var(--ice);border-bottom:1px solid #d9eaf5}
+    .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:21px 0}
+    .trust-item{display:flex;align-items:center;justify-content:center;gap:11px;text-align:left;color:var(--navy);font-weight:850}
+    .trust-icon{width:39px;height:39px;display:grid;place-items:center;border-radius:10px;background:#fff;color:var(--blue);font-size:1.25rem}
+    section{padding:78px 0}
+    .section-head{text-align:center;max-width:700px;margin:0 auto 38px}
+    .section-head .eyebrow{justify-content:center;color:var(--blue)}
+    .section-head .eyebrow:before{background:var(--blue)}
+    h2{font-size:clamp(2rem,3.3vw,3rem);line-height:1.13;letter-spacing:-1.2px;color:var(--navy);margin:13px 0}
+    .section-head p{color:var(--muted);margin:0;font-size:1.04rem}
+    .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .service-card{border:1px solid var(--line);border-radius:15px;padding:25px 22px;background:#fff;box-shadow:0 8px 25px #10243a06;transition:transform .2s,box-shadow .2s}
+    .service-card:hover{transform:translateY(-4px);box-shadow:0 16px 35px #10243a12}
+    .service-icon{width:53px;height:53px;display:grid;place-items:center;background:var(--ice);border-radius:13px;color:var(--blue);margin-bottom:19px}
+    .service-icon svg{width:29px;height:29px}
+    .service-card h3{margin:0 0 9px;color:var(--navy);font-size:1.12rem}
+    .service-card p{margin:0;color:var(--muted);font-size:.94rem}
+    .service-link{display:inline-block;margin-top:17px;color:var(--blue);font-weight:850;text-decoration:none;font-size:.9rem}
+    .about{background:#f5f9fc}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .about-panel{background:var(--navy);border-radius:20px;min-height:350px;padding:35px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+    .about-panel:after{content:"A&L";position:absolute;right:-12px;bottom:-62px;font-size:10rem;font-weight:950;color:#ffffff0a;letter-spacing:-12px}
+    .about-panel h3{font-size:2rem;line-height:1.15;margin:0;max-width:320px;position:relative;z-index:1}
+    .about-panel p{color:#c7d9e7;max-width:350px;position:relative;z-index:1}
+    .mini-label{display:inline-block;align-self:flex-start;padding:8px 12px;background:#ffffff12;border:1px solid #ffffff2b;border-radius:99px;font-weight:800;font-size:.8rem}
+    .about-copy p{color:var(--muted)}
+    .check-list{list-style:none;padding:0;margin:22px 0;display:grid;gap:12px}
+    .check-list li{display:flex;gap:10px;align-items:flex-start;font-weight:750;color:#304254}
+    .check{color:#1689d4;font-weight:950}
+    .areas{background:#fff}
+    .area-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .area-card{border-radius:14px;border:1px solid var(--line);padding:23px;display:flex;gap:15px;align-items:center}
+    .area-pin{width:45px;height:45px;border-radius:50%;background:var(--ice);display:grid;place-items:center;color:var(--blue);flex-shrink:0}
+    .area-card h3{margin:0;color:var(--navy);font-size:1.1rem}
+    .area-card p{margin:4px 0 0;color:var(--muted);font-size:.9rem}
+    .cta{background:linear-gradient(110deg,#1689d4,#12618f);color:#fff;padding:58px 0}
+    .cta-inner{display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .cta h2{color:#fff;margin:0 0 9px}
+    .cta p{margin:0;color:#e0f2ff}
+    .cta .btn{white-space:nowrap;background:#fff;color:var(--navy)}
+    .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:45px;align-items:start}
+    .contact-info{background:var(--navy);border-radius:17px;padding:30px;color:#fff}
+    .contact-info h3{font-size:1.45rem;margin:0 0 10px}
+    .contact-info>p{color:#c6d9e8}
+    .contact-line{display:flex;gap:13px;margin-top:24px;align-items:flex-start}
+    .contact-line .contact-symbol{width:40px;height:40px;border-radius:10px;background:#ffffff14;display:grid;place-items:center;color:#7dd0ff;flex-shrink:0}
+    .contact-line small{display:block;color:#a9c2d5;font-weight:700;margin-bottom:3px}
+    .contact-line a,.contact-line strong{font-weight:850;color:#fff;text-decoration:none}
+    .contact-form{display:grid;gap:15px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    label{display:block;font-size:.88rem;font-weight:800;color:#34475a;margin-bottom:6px}
+    input,select,textarea{width:100%;border:1px solid #ccd8e2;border-radius:8px;padding:13px 14px;font:inherit;color:var(--ink);background:#fff}
+    input:focus,select:focus,textarea:focus{outline:3px solid #1689d422;border-color:var(--blue)}
+    textarea{min-height:120px;resize:vertical}
+    .form-note{font-size:.82rem;color:var(--muted);margin:0}
+    footer{background:#091725;color:#c1d0dc;padding:27px 0}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .footer-brand{color:#fff;font-weight:900}
+    footer p{margin:3px 0;font-size:.85rem}
+    .footer-links{display:flex;gap:18px;flex-wrap:wrap}
+    .footer-links a{font-size:.88rem;text-decoration:none}
+    .mobile-call{display:none}
+    @media(max-width:900px){nav{gap:14px}nav a{font-size:.87rem}.services-grid{grid-template-columns:repeat(2,1fr)}.hero-grid{gap:20px}.hero-art{min-height:300px}.about-grid{gap:30px}}
+    @media(max-width:680px){.topbar-inner{justify-content:center;text-align:center}.topbar-inner span:first-child{display:none}.nav-inner{min-height:72px}.brand-mark{width:46px;height:46px}.brand-name{font-size:1.05rem}.brand-sub{font-size:.58rem}nav{display:none}.nav-inner>.btn{padding:10px 12px;font-size:.86rem}.hero-grid{grid-template-columns:1fr;padding-top:57px;padding-bottom:56px}.hero h1{letter-spacing:-1.5px}.hero-art{min-height:285px;margin-top:8px}.orbit{width:275px}.hvac-icon{width:145px;height:145px;border-radius:24px}.hvac-icon svg{width:115px;height:115px}.tag-one{right:-5px;top:24px}.tag-two{left:-5px;bottom:24px}.trust-grid{grid-template-columns:1fr;gap:12px}.trust-item{justify-content:flex-start}.services-grid{grid-template-columns:1fr}.service-card{padding:22px}.about-grid,.contact-grid{grid-template-columns:1fr}.about-panel{min-height:300px}.area-grid{grid-template-columns:1fr}.cta-inner{align-items:flex-start;flex-direction:column}.form-row{grid-template-columns:1fr}.container,.topbar-inner,.nav-inner{width:min(100% - 32px,1160px)}section{padding:58px 0}.mobile-call{display:flex;position:fixed;bottom:12px;left:12px;right:12px;z-index:20;box-shadow:0 10px 30px #07162545}.mobile-call .btn{width:100%;padding:15px}.footer-inner{align-items:flex-start;flex-direction:column}body{padding-bottom:65px}}
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span>Family Owned &amp; Operated · Quality Service. Reliable Comfort.</span>
+      <span>Need service? <a href="tel:+15169883035">Call 516-988-3035</a></span>
+    </div>
+  </div>
+  <header>
+    <div class="nav-inner">
+      <a class="brand" href="#home" aria-label="A and L HVAC home">
+        <span class="brand-mark">A&amp;L</span>
+        <span><span class="brand-name">A&amp;L HVAC LLC</span><span class="brand-sub">HEATING · COOLING · COMFORT</span></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#services">Services</a><a href="#about">About Us</a><a href="#areas">Service Area</a><a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-primary" href="tel:+15169883035">☎ Call Now</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Your comfort is our priority</div>
+          <h1>Comfort you can count on. <span>Service you can trust.</span></h1>
+          <p>Heating and cooling solutions for your home, delivered with a personal touch. From routine tune-ups to new installations, A&amp;L HVAC LLC is here to help keep you comfortable in every season.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:+15169883035">☎ Call 516-988-3035</a>
+            <a class="btn btn-outline" href="#services">Explore Our Services →</a>
+          </div>
+          <div class="hero-note"><strong>Family Owned &amp; Operated</strong> · Proudly serving Queens, Nassau County &amp; the Bronx</div>
+        </div>
+        <div class="hero-art" aria-label="Heating and cooling illustration">
+          <div class="orbit">
+            <div class="hvac-icon">
+              <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="18" y="28" width="124" height="104" rx="12" stroke="#10243a" stroke-width="6"/>
+                <path d="M32 48H128M32 112H128" stroke="#1689d4" stroke-width="5" stroke-linecap="round"/>
+                <circle cx="80" cy="80" r="25" stroke="#10243a" stroke-width="5"/>
+                <circle cx="80" cy="80" r="5" fill="#f5b942"/>
+                <path d="M80 58C91 63 93 72 80 80C67 73 68 64 80 58Z" fill="#1689d4"/>
+                <path d="M102 80C97 91 88 93 80 80C87 67 96 68 102 80Z" fill="#1689d4"/>
+                <path d="M80 102C69 97 67 88 80 80C93 87 92 96 80 102Z" fill="#1689d4"/>
+                <path d="M58 80C63 69 72 67 80 80C73 93 64 92 58 80Z" fill="#1689d4"/>
+              </svg>
+            </div>
+            <div class="floating-tag tag-one">❄ Cooling &amp; AC</div>
+            <div class="floating-tag tag-two">♨ Heating Solutions</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-strip">
+      <div class="container trust-grid">
+        <div class="trust-item"><span class="trust-icon">✓</span><span>Family Owned &amp; Operated</span></div>
+        <div class="trust-item"><span class="trust-icon">⌂</span><span>Residential HVAC Services</span></div>
+        <div class="trust-item"><span class="trust-icon">★</span><span>Focused on Quality &amp; Comfort</span></div>
+      </div>
+    </div>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">What we do</div>
+          <h2>Heating &amp; cooling services</h2>
+          <p>Whether your system needs attention or you’re planning an upgrade, we’ll help you understand your options and choose the right next step.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 13a8 8 0 0 1 16 0"/><path d="M4 13v4a2 2 0 0 0 2 2h1v-6H4Zm16 0v4a2 2 0 0 1-2 2h-1v-6h3Z"/><path d="M12 5v2m-4-1 1 2m7-2-1 2"/></svg></div>
+            <h3>HVAC Service &amp; Repairs</h3><p>Help diagnosing heating and cooling problems and getting your equipment back to proper operation.</p><a class="service-link" href="#contact">Request service →</a>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2M4 4l2 2m12-2-2 2"/></svg></div>
+            <h3>Heating &amp; AC Tune-Ups</h3><p>Seasonal maintenance and inspections designed to help your system run safely and reliably.</p><a class="service-link" href="#contact">Schedule a tune-up →</a>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V5h16v15M8 9h8M8 13h8M8 17h5"/><path d="M2 20h20"/></svg></div>
+            <h3>System Installation</h3><p>Explore heating and cooling system replacement or installation options for your home.</p><a class="service-link" href="#contact">Discuss an installation →</a>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/><path d="M9 15a3 3 0 0 0 3 3"/></svg></div>
+            <h3>Hot Water Heaters</h3><p>Service and replacement guidance for hot water heater needs and dependable household hot water.</p><a class="service-link" href="#contact">Ask about hot water →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div class="about-panel">
+          <span class="mini-label">Local service. Personal care.</span>
+          <h3>We treat your home with the care we’d give our own.</h3>
+          <p>At A&amp;L HVAC LLC, comfort is more than temperature. It’s clear communication, dependable service, and helping customers make informed decisions.</p>
+        </div>
+        <div class="about-copy">
+          <div class="eyebrow">Get to know A&amp;L</div>
+          <h2>A family-owned team focused on your comfort.</h2>
+          <p>We’re proud to serve local homeowners with practical HVAC solutions and a customer-first approach. Whether you need routine maintenance, help with a repair, or a quote for a new system, we’re happy to talk through your needs.</p>
+          <ul class="check-list">
+            <li><span class="check">✓</span><span>Friendly, straightforward communication</span></li>
+            <li><span class="check">✓</span><span>Service, tune-ups, and installation options</span></li>
+            <li><span class="check">✓</span><span>Solutions tailored to your home and system</span></li>
+          </ul>
+          <a class="btn btn-dark" href="#contact">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="areas" id="areas">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Where we work</div>
+          <h2>Proud to serve our local communities</h2>
+          <p>A&amp;L HVAC LLC serves homeowners across these New York areas. Contact us to discuss service at your address.</p>
+        </div>
+        <div class="area-grid">
+          <div class="area-card"><span class="area-pin">⌖</span><div><h3>Queens</h3><p>Heating and cooling service</p></div></div>
+          <div class="area-card"><span class="area-pin">⌖</span><div><h3>Nassau County</h3><p>Residential HVAC solutions</p></div></div>
+          <div class="area-card"><span class="area-pin">⌖</span><div><h3>The Bronx</h3><p>Maintenance, repair &amp; installation</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-inner">
+        <div><h2>Ready to get comfortable?</h2><p>Call A&amp;L HVAC LLC to talk about your heating or cooling needs.</p></div>
+        <a class="btn" href="tel:+15169883035">☎ 516-988-3035</a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Contact us</div>
+          <h2>Let’s talk about your HVAC needs</h2>
+          <p>Call us directly or prepare a service request below. The request form opens your email app with your details filled in.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>A&amp;L HVAC LLC</h3>
+            <p>Quality Service. Reliable Comfort. Family Owned.</p>
+            <div class="contact-line"><span class="contact-symbol">☎</span><div><small>Call us</small><a href="tel:+15169883035">516-988-3035</a></div></div>
+            <div class="contact-line"><span class="contact-symbol">⌖</span><div><small>Service area</small><strong>Queens · Nassau County · The Bronx</strong></div></div>
+            <div class="contact-line"><span class="contact-symbol">✓</span><div><small>Services</small><strong>Repairs · Tune-Ups · Installations · Hot Water Heaters</strong></div></div>
+          </div>
+          <form class="contact-form" id="serviceForm">
+            <div class="form-row">
+              <div><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required placeholder="Full name"></div>
+              <div><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="Best number to reach you"></div>
+            </div>
+            <div class="form-row">
+              <div><label for="area">Your area</label><select id="area" name="area" required><option value="">Select area</option><option>Queens</option><option>Nassau County</option><option>The Bronx</option><option>Other</option></select></div>
+              <div><label for="service">Service needed</label><select id="service" name="service" required><option value="">Choose a service</option><option>Heating repair</option><option>AC repair</option><option>Heating maintenance / tune-up</option><option>AC maintenance / tune-up</option><option>New system installation</option><option>Hot water heater</option><option>Other / not sure</option></select></div>
+            </div>
+            <div><label for="message">How can we help?</label><textarea id="message" name="message" placeholder="Tell us a little about your system or issue..."></textarea></div>
+            <button class="btn btn-primary" type="submit">Prepare Service Request →</button>
+            <p class="form-note">This demo form does not submit information to a server. It opens your email app so you can send the request. Add your business email to the code before publishing.</p>
+            <p id="formStatus" class="form-note" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div><div class="footer-brand">A&amp;L HVAC LLC</div><p>Quality Service. Reliable Comfort. Family Owned.</p><p>© <span id="year"></span> A&amp;L HVAC LLC. All rights reserved.</p></div>
+      <div class="footer-links"><a href="#services">Services</a><a href="#about">About</a><a href="#areas">Service Area</a><a href="#contact">Contact</a><a href="tel:+15169883035">Call Now</a></div>
+    </div>
+  </footer>
+  <div class="mobile-call"><a class="btn btn-primary" href="tel:+15169883035">☎ Call A&amp;L HVAC · 516-988-3035</a></div>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('serviceForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const data = new FormData(this);
+      const subject = encodeURIComponent('HVAC Service Request - ' + data.get('name'));
+      const body = encodeURIComponent(
+        'Name: ' + data.get('name') + '\n' +
+        'Phone: ' + data.get('phone') + '\n' +
+        'Area: ' + data.get('area') + '\n' +
+        'Service: ' + data.get('service') + '\n\n' +
+        'Details: ' + (data.get('message') || 'Not provided')
+      );
+      document.getElementById('formStatus').textContent = 'Opening your email app with your service request. Please add A&L HVAC’s business email in the website code before publishing.';
+      window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+    });
+  </script>
+</body>
+</html>
